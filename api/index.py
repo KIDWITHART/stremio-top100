@@ -60,12 +60,31 @@ if os.path.exists(movie_path):
                 "description": item.get("description", "")
             })
 
-MANIFEST = {
-    "id": "org.antigravity.curatedplaylists",
-    "version": "1.1.0",
-    "name": "Curated Playlists (A24, Underrated Movies & Top 100 TV)",
-    "description": "Custom Stremio Playlists featuring 50 Notable A24 Films, 50 Underrated Films (2010-2026), and Top 100 TV Shows.",
-    "types": ["movie", "series"],
+# Manifest 1: TV Shows Addon
+MANIFEST_TV = {
+    "id": "org.antigravity.top100tvshowsaddon",
+    "version": "1.0.0",
+    "name": "Top 100 TV Shows (21st Century)",
+    "description": "Custom Stremio Addon featuring the Top 100 TV Shows of the 21st Century (NYT List).",
+    "types": ["series"],
+    "catalogs": [
+        {
+            "type": "series",
+            "id": "top100_series",
+            "name": "Top 100 TV Shows"
+        }
+    ],
+    "resources": ["catalog"],
+    "idPrefixes": ["tt"]
+}
+
+# Manifest 2: Curated Movies Addon (A24 & Underrated)
+MANIFEST_MOVIES = {
+    "id": "org.antigravity.curatedmoviesaddon",
+    "version": "1.0.0",
+    "name": "A24 & Underrated Movies Playlist",
+    "description": "Custom Stremio Addon featuring 50 Notable A24 Films & 50 Underrated Gems (2010-2026).",
+    "types": ["movie"],
     "catalogs": [
         {
             "type": "movie",
@@ -76,11 +95,6 @@ MANIFEST = {
             "type": "movie",
             "id": "underrated_movies",
             "name": "50 Underrated Gems (2010-2026)"
-        },
-        {
-            "type": "series",
-            "id": "top100_series",
-            "name": "Top 100 TV Shows"
         }
     ],
     "resources": ["catalog"],
@@ -92,38 +106,64 @@ MANIFEST = {
 def home():
     host = request.headers.get('Host', 'localhost')
     scheme = request.headers.get('X-Forwarded-Proto', 'https')
-    manifest_url = f"{scheme}://{host}/manifest.json"
-    stremio_link = f"stremio://{host}/manifest.json"
+    movies_manifest_url = f"{scheme}://{host}/movies/manifest.json"
+    movies_stremio_link = f"stremio://{host}/movies/manifest.json"
+    
+    tv_manifest_url = f"{scheme}://{host}/tv/manifest.json"
+    tv_stremio_link = f"stremio://{host}/tv/manifest.json"
+    
     html = f"""<!DOCTYPE html>
 <html>
 <head>
-    <title>Curated Playlists - Stremio Addon</title>
+    <title>Stremio Addons Directory</title>
     <style>
-        body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f0f13; color: #fff; text-align: center; padding: 50px 20px; }}
-        .card {{ background: #1c1c24; max-width: 650px; margin: 0 auto; padding: 35px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid #2d2d3d; }}
-        h1 {{ color: #7b5bf2; margin-bottom: 10px; }}
-        p {{ color: #a0a0b0; font-size: 16px; line-height: 1.5; }}
-        .btn {{ display: inline-block; background: #7b5bf2; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 10px; font-weight: bold; font-size: 18px; margin-top: 20px; transition: transform 0.2s; }}
-        .btn:hover {{ transform: scale(1.05); background: #6945e0; }}
-        code {{ background: #121218; padding: 10px 15px; border-radius: 8px; display: block; margin: 20px 0; word-break: break-all; color: #00e5ff; font-family: monospace; }}
+        body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f0f13; color: #fff; text-align: center; padding: 40px 20px; }}
+        .container {{ max-width: 800px; margin: 0 auto; }}
+        .card {{ background: #1c1c24; padding: 30px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid #2d2d3d; margin-bottom: 25px; text-align: left; }}
+        h1 {{ color: #7b5bf2; font-size: 28px; margin-bottom: 10px; }}
+        h2 {{ color: #fff; margin-top: 0; }}
+        p {{ color: #a0a0b0; font-size: 15px; line-height: 1.5; }}
+        .btn {{ display: inline-block; background: #7b5bf2; color: #fff; text-decoration: none; padding: 12px 24px; border-radius: 10px; font-weight: bold; font-size: 16px; margin-top: 15px; transition: transform 0.2s; }}
+        .btn:hover {{ transform: scale(1.03); background: #6945e0; }}
+        code {{ background: #121218; padding: 10px 15px; border-radius: 8px; display: block; margin-top: 15px; word-break: break-all; color: #00e5ff; font-family: monospace; font-size: 14px; }}
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>🎬 Curated Stremio Playlists Addon</h1>
-        <p>Active on Vercel Cloud! Includes <b>50 Notable A24 Films</b>, <b>50 Underrated Gems (2010–2026)</b>, and <b>Top 100 TV Shows</b>.</p>
-        <a class="btn" href="{stremio_link}">➕ Install in Stremio</a>
-        <p style="margin-top: 30px;">Or copy and paste this manifest URL into Stremio's search bar:</p>
-        <code>{manifest_url}</code>
+    <div class="container">
+        <h1>🎬 Separate Stremio Addons</h1>
+        <p style="margin-bottom: 30px;">Choose and install each addon independently into your Stremio client.</p>
+        
+        <div class="card">
+            <h2>🎬 Addon 1: A24 & Underrated Movies</h2>
+            <p>Includes <b>50 Notable A24 Films</b> and <b>50 Underrated Gems (2010–2026)</b>.</p>
+            <a class="btn" href="{movies_stremio_link}">➕ Install Movie Addon</a>
+            <code>{movies_manifest_url}</code>
+        </div>
+
+        <div class="card">
+            <h2>🍿 Addon 2: Top 100 TV Shows</h2>
+            <p>Includes the <b>Top 100 TV Shows of the 21st Century</b>.</p>
+            <a class="btn" href="{tv_stremio_link}">➕ Install TV Shows Addon</a>
+            <code>{tv_manifest_url}</code>
+        </div>
     </div>
 </body>
 </html>"""
     return html
 
-@app.route('/manifest.json')
-def manifest():
-    return jsonify(MANIFEST)
+# Routes for Movie Addon
+@app.route('/movies/manifest.json')
+@app.route('/movies/manifest')
+def movies_manifest():
+    return jsonify(MANIFEST_MOVIES)
 
+# Routes for TV Shows Addon
+@app.route('/manifest.json')
+@app.route('/tv/manifest.json')
+def tv_manifest():
+    return jsonify(MANIFEST_TV)
+
+# Catalog endpoints
 @app.route('/catalog/<type_>/<id_>.json')
 @app.route('/catalog/<type_>/<id_>/<skip_str>.json')
 def catalog(type_, id_, skip_str=None):
