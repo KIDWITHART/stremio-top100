@@ -28,7 +28,7 @@ if os.path.exists(tv_path):
                 "description": item.get("description", "")
             })
 
-# 2. Load A24 & Underrated Hollywood Movies
+# 2. Load Hollywood Movies
 movie_path = os.path.join(base_dir, "movies_metas.json")
 if not os.path.exists(movie_path):
     movie_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "movies_metas.json")
@@ -80,12 +80,61 @@ if os.path.exists(indian_path):
                 "description": item.get("description", "")
             })
 
-# Manifest 1: Underrated Indian Films Addon
+# 4. Load Anime
+anime_path = os.path.join(base_dir, "anime_metas.json")
+if not os.path.exists(anime_path):
+    anime_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "anime_metas.json")
+
+ANIME_SERIES_METAS = []
+ANIME_MOVIE_METAS = []
+
+if os.path.exists(anime_path):
+    with open(anime_path, "r", encoding="utf-8") as f:
+        raw_anime = json.load(f)
+        for item in raw_anime:
+            formatted = {
+                "id": item["id"],
+                "type": item.get("type", "series"),
+                "name": f"#{item['rank']} - {item['name']}",
+                "poster": item.get("poster"),
+                "background": item.get("background"),
+                "releaseInfo": str(item.get("releaseInfo", "")),
+                "description": item.get("description", "")
+            }
+            if item.get("type") == "movie":
+                ANIME_MOVIE_METAS.append(formatted)
+            else:
+                ANIME_SERIES_METAS.append(formatted)
+
+# Manifest 1: Anime Addon
+MANIFEST_ANIME = {
+    "id": "org.antigravity.underratedanimeaddon",
+    "version": "1.0.0",
+    "name": "100 Underrated Anime & Movies",
+    "description": "Custom Stremio Addon featuring 100 Underrated Anime Series, OVAs, and Movies across all genres.",
+    "types": ["series", "movie"],
+    "catalogs": [
+        {
+            "type": "series",
+            "id": "underrated_anime_series",
+            "name": "100 Underrated Anime Series"
+        },
+        {
+            "type": "movie",
+            "id": "underrated_anime_movies",
+            "name": "Underrated Anime Movies"
+        }
+    ],
+    "resources": ["catalog"],
+    "idPrefixes": ["tt"]
+}
+
+# Manifest 2: Underrated Indian Films Addon
 MANIFEST_INDIAN = {
     "id": "org.antigravity.underratedindianfilmsaddon",
     "version": "1.0.0",
     "name": "50 Underrated Indian Films",
-    "description": "Custom Stremio Addon featuring 50 Underrated Indian Films across languages (Hindi, Malayalam, Tamil, Bengali, Marathi, Assamese).",
+    "description": "Custom Stremio Addon featuring 50 Underrated Indian Films across languages.",
     "types": ["movie"],
     "catalogs": [
         {
@@ -98,7 +147,7 @@ MANIFEST_INDIAN = {
     "idPrefixes": ["tt"]
 }
 
-# Manifest 2: A24 & Underrated Hollywood Movies Addon
+# Manifest 3: A24 & Underrated Hollywood Movies Addon
 MANIFEST_MOVIES = {
     "id": "org.antigravity.curatedmoviesaddon",
     "version": "1.0.0",
@@ -121,12 +170,12 @@ MANIFEST_MOVIES = {
     "idPrefixes": ["tt"]
 }
 
-# Manifest 3: TV Shows Addon
+# Manifest 4: TV Shows Addon
 MANIFEST_TV = {
     "id": "org.antigravity.top100tvshowsaddon",
     "version": "1.0.0",
     "name": "Top 100 TV Shows (21st Century)",
-    "description": "Custom Stremio Addon featuring the Top 100 TV Shows of the 21st Century (NYT List).",
+    "description": "Custom Stremio Addon featuring the Top 100 TV Shows of the 21st Century.",
     "types": ["series"],
     "catalogs": [
         {
@@ -145,6 +194,9 @@ def home():
     host = request.headers.get('Host', 'localhost')
     scheme = request.headers.get('X-Forwarded-Proto', 'https')
     
+    anime_manifest_url = f"{scheme}://{host}/anime/manifest.json"
+    anime_stremio_link = f"stremio://{host}/anime/manifest.json"
+
     indian_manifest_url = f"{scheme}://{host}/indian/manifest.json"
     indian_stremio_link = f"stremio://{host}/indian/manifest.json"
     
@@ -176,21 +228,28 @@ def home():
         <p style="margin-bottom: 30px;">Choose and install each addon independently into your Stremio client.</p>
         
         <div class="card">
-            <h2>🇮🇳 Addon 1: 50 Underrated Indian Films</h2>
+            <h2>⛩️ Addon 1: 100 Underrated Anime & Movies</h2>
+            <p>100 Underrated Anime Series, OVAs, and Movies across all genres.</p>
+            <a class="btn" href="{anime_stremio_link}">➕ Install Anime Addon</a>
+            <code>{anime_manifest_url}</code>
+        </div>
+
+        <div class="card">
+            <h2>🇮🇳 Addon 2: 50 Underrated Indian Films</h2>
             <p>50 Underrated Indian Films across Hindi, Malayalam, Tamil, Bengali, Marathi, Assamese, and classic cinema.</p>
             <a class="btn" href="{indian_stremio_link}">➕ Install Indian Movies Addon</a>
             <code>{indian_manifest_url}</code>
         </div>
 
         <div class="card">
-            <h2>🎬 Addon 2: A24 & Underrated Movies</h2>
+            <h2>🎬 Addon 3: A24 & Underrated Movies</h2>
             <p>Includes <b>50 Notable A24 Films</b> and <b>50 Underrated Gems (2010–2026)</b>.</p>
             <a class="btn" href="{movies_stremio_link}">➕ Install Hollywood Movies Addon</a>
             <code>{movies_manifest_url}</code>
         </div>
 
         <div class="card">
-            <h2>🍿 Addon 3: Top 100 TV Shows</h2>
+            <h2>🍿 Addon 4: Top 100 TV Shows</h2>
             <p>Includes the <b>Top 100 TV Shows of the 21st Century</b> (NYT List).</p>
             <a class="btn" href="{tv_stremio_link}">➕ Install TV Shows Addon</a>
             <code>{tv_manifest_url}</code>
@@ -200,10 +259,15 @@ def home():
 </html>"""
     return html
 
+# Routes for Anime Addon
+@app.route('/anime/manifest.json')
+@app.route('/anime/manifest')
+def anime_manifest():
+    return jsonify(MANIFEST_ANIME)
+
 # Routes for Indian Movies Addon
 @app.route('/indian/manifest.json')
 @app.route('/indian/manifest')
-@app.route('/indian-movies/manifest.json')
 def indian_manifest():
     return jsonify(MANIFEST_INDIAN)
 
@@ -233,7 +297,11 @@ def catalog(type_, id_, prefix=None, skip_str=None):
             skip = 0
 
     metas = []
-    if id_ == "underrated_indian_movies":
+    if id_ == "underrated_anime_series":
+        metas = ANIME_SERIES_METAS
+    elif id_ == "underrated_anime_movies":
+        metas = ANIME_MOVIE_METAS
+    elif id_ == "underrated_indian_movies":
         metas = INDIAN_METAS
     elif id_ == "a24_movies":
         metas = A24_METAS
