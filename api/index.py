@@ -1,7 +1,10 @@
-from http.server import BaseHTTPRequestHandler
+from flask import Flask, jsonify, request
+from flask_cors import CORS
 import json
-import urllib.parse
 import os
+
+app = Flask(__name__)
+CORS(app)
 
 # Resolve path to top100_metas.json
 base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -42,30 +45,14 @@ MANIFEST = {
     "idPrefixes": ["tt"]
 }
 
-class handler(BaseHTTPRequestHandler):
-    def end_headers(self):
-        self.send_header('Access-Control-Allow-Origin', '*')
-        self.send_header('Access-Control-Allow-Headers', '*')
-        self.send_header('Content-Type', 'application/json; charset=utf-8')
-        super().end_headers()
-
-    def do_OPTIONS(self):
-        self.send_response(200)
-        self.end_headers()
-
-    def do_GET(self):
-        parsed = urllib.parse.urlparse(self.path)
-        path = parsed.path
-
-        if path == "" or path == "/" or path == "/index.html":
-            self.send_response(200)
-            self.send_header('Access-Control-Allow-Origin', '*')
-            self.send_header('Content-Type', 'text/html; charset=utf-8')
-            super().end_headers()
-            host = self.headers.get('Host', 'stremio-top100.vercel.app')
-            manifest_url = f"https://{host}/manifest.json"
-            stremio_link = f"stremio://{host}/manifest.json"
-            html = f"""<!DOCTYPE html>
+@app.route('/')
+@app.route('/index.html')
+def home():
+    host = request.headers.get('Host', 'localhost')
+    scheme = request.headers.get('X-Forwarded-Proto', 'https')
+    manifest_url = f"{scheme}://{host}/manifest.json"
+    stremio_link = f"stremio://{host}/manifest.json"
+    html = f"""<!DOCTYPE html>
 <html>
 <head>
     <title>Top 100 TV Shows - Stremio Addon</title>
@@ -89,30 +76,24 @@ class handler(BaseHTTPRequestHandler):
     </div>
 </body>
 </html>"""
-            self.wfile.write(html.encode('utf-8'))
-            return
+    return html
 
-        if path == "/manifest.json":
-            self.send_response(200)
-            self.end_headers()
-            self.wfile.write(json.dumps(MANIFEST).encode('utf-8'))
-            return
+@app.route('/manifest.json')
+def manifest():
+    return jsonify(MANIFEST)
 
-        if path.startswith("/catalog/series/top100_series"):
+@app.route('/catalog/<type_>/<id_>.json')
+@app.route('/catalog/<type_>/<id_>/<skip_str>.json')
+def catalog(type_, id_, skip_str=None):
+    skip = 0
+    if skip_str and "skip=" in skip_str:
+        try:
+            skip = int(skip_str.replace("skip=", ""))
+        except:
             skip = 0
-            if "skip=" in path:
-                try:
-                    parts = path.split("skip=")
-                    skip = int(parts[1].split(".json")[0])
-                except:
-                    skip = 0
-            
-            slice_metas = STREMIO_METAS[skip:skip+100]
-            self.send_response(200)
-            self.end_headers()
-            self.wfile.write(json.dumps({"metas": slice_metas}).encode('utf-8'))
-            return
+    
+    slice_metas = STREMIO_METAS[skip:skip+100]
+    return jsonify({"metas": slice_metas})
 
-        self.send_response(404)
-        self.end_headers()
-        self.wfile.write(json.dumps({"error": "Not Found"}).encode('utf-8'))
+if __name__ == '__main__':
+    app.run(port=7070)
