@@ -163,10 +163,12 @@ def movies_manifest():
 def tv_manifest():
     return jsonify(MANIFEST_TV)
 
-# Catalog endpoints
+# Catalog endpoints (supporting both root and prefixed catalog paths)
 @app.route('/catalog/<type_>/<id_>.json')
 @app.route('/catalog/<type_>/<id_>/<skip_str>.json')
-def catalog(type_, id_, skip_str=None):
+@app.route('/<prefix>/catalog/<type_>/<id_>.json')
+@app.route('/<prefix>/catalog/<type_>/<id_>/<skip_str>.json')
+def catalog(type_, id_, prefix=None, skip_str=None):
     skip = 0
     if skip_str and "skip=" in skip_str:
         try:
