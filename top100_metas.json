@@ -1,0 +1,1002 @@
+[
+  {
+    "rank": 1,
+    "id": "tt0903747",
+    "type": "series",
+    "name": "Breaking Bad",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMzU5ZGYzNmQtMTdhYy00OGRiLTg0NmQtYjVjNzliZTg1ZGE4XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt0903747/img",
+    "releaseInfo": "2008-2013",
+    "description": ""
+  },
+  {
+    "rank": 2,
+    "id": "tt0306414",
+    "type": "series",
+    "name": "The Wire",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYjIxZTMwZmUtOTUzYS00YmU2LWJhNDAtNzA2NDg0NDA0MjVkXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt0306414/img",
+    "releaseInfo": "2002-2008",
+    "description": ""
+  },
+  {
+    "rank": 3,
+    "id": "tt0804503",
+    "type": "series",
+    "name": "Mad Men",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYTNjNjc5OWQtYjMxNC00MzEwLWIxM2UtNjU3NzhkNjZmNGI3XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt0804503/img",
+    "releaseInfo": "2007-2015",
+    "description": ""
+  },
+  {
+    "rank": 4,
+    "id": "tt7660850",
+    "type": "series",
+    "name": "Succession",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYTY4YTVkY2QtMjRmOS00YzliLWIxOWQtMTdkOTVkN2UzODNmXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt7660850/img",
+    "releaseInfo": "2018-2023",
+    "description": ""
+  },
+  {
+    "rank": 5,
+    "id": "tt5687612",
+    "type": "series",
+    "name": "Fleabag",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjA4MzU5NzQxNV5BMl5BanBnXkFtZTgwOTg3MDA5NzM@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt5687612/img",
+    "releaseInfo": "2016-2019",
+    "description": ""
+  },
+  {
+    "rank": 6,
+    "id": "tt0944947",
+    "type": "series",
+    "name": "Game of Thrones",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNGYxOGJkMjItZjVkZC00OGEzLWExNjktOTZmNGZhZmRlMTk2XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt0944947/img",
+    "releaseInfo": "2011-2019",
+    "description": ""
+  },
+  {
+    "rank": 7,
+    "id": "tt1759761",
+    "type": "series",
+    "name": "Veep",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjE2NDM0OTEwMl5BMl5BanBnXkFtZTgwNzgwNDI0ODE@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt1759761/img",
+    "releaseInfo": "2012-2019",
+    "description": ""
+  },
+  {
+    "rank": 8,
+    "id": "tt0496424",
+    "type": "series",
+    "name": "30 Rock",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTQ4NDQ4OTUzOV5BMl5BanBnXkFtZTcwMjMzMTUyNw@@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt0496424/img",
+    "releaseInfo": "2006-2013",
+    "description": ""
+  },
+  {
+    "rank": 9,
+    "id": "tt0264235",
+    "type": "series",
+    "name": "Curb Your Enthusiasm",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZmFiZDY2ZDItZDliOC00Y2JhLTliMWYtODkzMTA0YmIwZDA3XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt0264235/img",
+    "releaseInfo": "2000-2024",
+    "description": ""
+  },
+  {
+    "rank": 10,
+    "id": "tt4288182",
+    "type": "series",
+    "name": "Atlanta",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMDAzMDdkZmEtN2QxMi00NGQ2LTg3MTEtYTBlMmNmYmJjOTc1XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt4288182/img",
+    "releaseInfo": "2016-2022",
+    "description": ""
+  },
+  {
+    "rank": 11,
+    "id": "tt0386676",
+    "type": "series",
+    "name": "The Office",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZjQwYzBlYzUtZjhhOS00ZDQ0LWE0NzAtYTk4MjgzZTNkZWEzXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt0386676/img",
+    "releaseInfo": "2005-2013",
+    "description": ""
+  },
+  {
+    "rank": 12,
+    "id": "tt0367279",
+    "type": "series",
+    "name": "Arrested Development",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMzA1NzBiMzUtZTA1Zi00YTVjLTkxZWYtZTIyYzFhMzVjZmQ1XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt0367279/img",
+    "releaseInfo": "2003-2019",
+    "description": ""
+  },
+  {
+    "rank": 13,
+    "id": "tt1723816",
+    "type": "series",
+    "name": "Girls",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTU1Mzk2ODEzN15BMl5BanBnXkFtZTgwNDQwMjAxMTI@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt1723816/img",
+    "releaseInfo": "2012-2017",
+    "description": ""
+  },
+  {
+    "rank": 14,
+    "id": "tt0758745",
+    "type": "series",
+    "name": "Friday Night Lights",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNzMxNzQwODItNDFiYy00YjFhLWJjMzUtYjc0Nzk5ZTI4ODA1XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt0758745/img",
+    "releaseInfo": "2006-2011",
+    "description": ""
+  },
+  {
+    "rank": 15,
+    "id": "tt0248654",
+    "type": "series",
+    "name": "Six Feet Under",
+    "poster": "https://m.media-amazon.com/images/M/MV5BY2Q0YTQ4NGItMDc2YS00M2VhLTg1ZmUtNDVkMWM1MWJlNjc0XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt0248654/img",
+    "releaseInfo": "2001-2005",
+    "description": ""
+  },
+  {
+    "rank": 16,
+    "id": "tt0290978",
+    "type": "series",
+    "name": "The Office",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNTk4MjNjODctNDgyZC00NDhkLWE1OGQtMjA3M2FlMDVjMjkzXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt0290978/img",
+    "releaseInfo": "2001-2003",
+    "description": ""
+  },
+  {
+    "rank": 17,
+    "id": "tt2149175",
+    "type": "series",
+    "name": "The Americans",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjIzNTEzMDY3OF5BMl5BanBnXkFtZTcwMzI5NDI5OA@@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt2149175/img",
+    "releaseInfo": "2013-2018",
+    "description": ""
+  },
+  {
+    "rank": 18,
+    "id": "tt11204260",
+    "type": "series",
+    "name": "I May Destroy You",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZmM4N2U3YTAtOTY2Zi00ZjYxLWE0ZDUtYzQ2ODdmOTEyN2EzXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt11204260/img",
+    "releaseInfo": "2020",
+    "description": ""
+  },
+  {
+    "rank": 19,
+    "id": "tt7366338",
+    "type": "series",
+    "name": "Chernobyl",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNzU0OTI4YTQtNGQ1ZS00ZjA4LTg3MTMtZjkyZWNjN2RiZDJmXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt7366338/img",
+    "releaseInfo": "2019",
+    "description": ""
+  },
+  {
+    "rank": 20,
+    "id": "tt4786824",
+    "type": "series",
+    "name": "The Crown",
+    "poster": "https://m.media-amazon.com/images/M/MV5BODcyODZlZDMtZGE0Ni00NjBhLWJlYTAtZDdlNWY3MzkwMGVhXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt4786824/img",
+    "releaseInfo": "2016-2023",
+    "description": ""
+  },
+  {
+    "rank": 21,
+    "id": "tt13406094",
+    "type": "series",
+    "name": "The White Lotus",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZmM1MGM0MDQtZTAzNy00ZGJkLWI4MDUtNjBmMzdhYjhlM2QwXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt13406094/img",
+    "releaseInfo": "2021-",
+    "description": ""
+  },
+  {
+    "rank": 22,
+    "id": "tt0411008",
+    "type": "series",
+    "name": "Lost",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZmZhY2ViYzYtMTQ0NS00NDcyLWIxZTYtMGUyODE0NDA0NmNkXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt0411008/img",
+    "releaseInfo": "2004-2010",
+    "description": ""
+  },
+  {
+    "rank": 23,
+    "id": "tt0434672",
+    "type": "series",
+    "name": "The Comeback",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYWE1MGExMWUtMzYxOC00MzBmLWFmM2UtODEzMzhiNmRjN2NjXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt0434672/img",
+    "releaseInfo": "2005-2026",
+    "description": ""
+  },
+  {
+    "rank": 24,
+    "id": "tt0348914",
+    "type": "series",
+    "name": "Deadwood",
+    "poster": "https://m.media-amazon.com/images/M/MV5BODFiMjBkNDMtN2I1NS00YWM3LTliNWEtMTg0NjVlN2I5YTNlXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt0348914/img",
+    "releaseInfo": "2004-2006",
+    "description": ""
+  },
+  {
+    "rank": 25,
+    "id": "tt2699128",
+    "type": "series",
+    "name": "The Leftovers",
+    "poster": "https://m.media-amazon.com/images/M/MV5BODAwNjJkZDctOWM5Ny00ODY0LWJjZDItMTE3YWUxMWJkMGJkXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt2699128/img",
+    "releaseInfo": "2014-2017",
+    "description": ""
+  },
+  {
+    "rank": 26,
+    "id": "tt2085059",
+    "type": "series",
+    "name": "Black Mirror",
+    "poster": "https://m.media-amazon.com/images/M/MV5BODcxMWI2NDMtYTc3NC00OTZjLWFmNmUtM2NmY2I1ODkxYzczXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt2085059/img",
+    "releaseInfo": "2011-",
+    "description": ""
+  },
+  {
+    "rank": 27,
+    "id": "tt3032476",
+    "type": "series",
+    "name": "Better Call Saul",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTAxOTQ0MjUzMzJeQTJeQWpwZ15BbWU4MDY0NTAxNzMx._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt3032476/img",
+    "releaseInfo": "2015-2022",
+    "description": ""
+  },
+  {
+    "rank": 28,
+    "id": "tt0185906",
+    "type": "series",
+    "name": "Band of Brothers",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYjdlNGJlYjQtMDU2Mi00ZjA1LWEwYzgtYzlmNDM5MmE1ZGUwXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt0185906/img",
+    "releaseInfo": "2001",
+    "description": ""
+  },
+  {
+    "rank": 29,
+    "id": "tt1981558",
+    "type": "series",
+    "name": "Key and Peele",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZTNjZmY3MTktNzgyOC00MjE5LTgzYjgtODYyNDMwYzEzNmZiXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt1981558/img",
+    "releaseInfo": "2012-2015",
+    "description": ""
+  },
+  {
+    "rank": 30,
+    "id": "tt11280740",
+    "type": "series",
+    "name": "Severance",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZDI5YzJhODQtMzQyNy00YWNmLWIxMjUtNDBjNjA5YWRjMzExXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt11280740/img",
+    "releaseInfo": "2022-",
+    "description": ""
+  },
+  {
+    "rank": 31,
+    "id": "tt0239195",
+    "type": "series",
+    "name": "Survivor",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZTg4ZWRiNmEtNWI2MC00ZTY2LWEwYzctMGM5NGFlNjNjMzM5XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt0239195/img",
+    "releaseInfo": "2000-",
+    "description": ""
+  },
+  {
+    "rank": 32,
+    "id": "tt9253284",
+    "type": "series",
+    "name": "Andor",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNGI2MTJjMjUtMTJhOC00YTY2LTg1NjUtMTdmMjg4YTk2YjM5XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt9253284/img",
+    "releaseInfo": "2022-2025",
+    "description": ""
+  },
+  {
+    "rank": 33,
+    "id": "tt1509004",
+    "type": "series",
+    "name": "Enlightened",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTUzNzY3NjA4NF5BMl5BanBnXkFtZTcwNTA5MTY2Ng@@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt1509004/img",
+    "releaseInfo": "2011-2013",
+    "description": ""
+  },
+  {
+    "rank": 34,
+    "id": "tt3526078",
+    "type": "series",
+    "name": "Schitt's Creek",
+    "poster": "https://m.media-amazon.com/images/M/MV5BODk2Nzg4OWYtODczMy00NWRkLTg5ODQtZTU1ZGRhMzRhZGZhXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt3526078/img",
+    "releaseInfo": "2015-2020",
+    "description": ""
+  },
+  {
+    "rank": 35,
+    "id": "tt2356777",
+    "type": "series",
+    "name": "True Detective",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYjgwYzA1NWMtNDYyZi00ZGQyLWI5NTktMDYwZjE2OTIwZWEwXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt2356777/img",
+    "releaseInfo": "2014-",
+    "description": ""
+  },
+  {
+    "rank": 36,
+    "id": "tt31938062",
+    "type": "series",
+    "name": "The Pitt",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMThjMjYxM2YtM2IzZC00NDdmLThiNDYtNzEyNzA0YTRmYTk3XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt31938062/img",
+    "releaseInfo": "2025-",
+    "description": ""
+  },
+  {
+    "rank": 37,
+    "id": "tt0407362",
+    "type": "series",
+    "name": "Battlestar Galactica",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNmMzYzdmNWMtM2ZmMi00Y2E2LWI5ZTMtYWJlNmJiMDgyYWRiXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt0407362/img",
+    "releaseInfo": "2004-2009",
+    "description": ""
+  },
+  {
+    "rank": 38,
+    "id": "tt1796960",
+    "type": "series",
+    "name": "Homeland",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjAwNTRmODktZDk5Ny00ZjMwLWFhMDUtOTdlOWNhNDMyZmNkXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt1796960/img",
+    "releaseInfo": "2011-2020",
+    "description": ""
+  },
+  {
+    "rank": 39,
+    "id": "tt7049682",
+    "type": "series",
+    "name": "Watchmen",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZGJkMmY5MTQtODg0MC00NTgxLTgwMTctODMxNGM0NDhhM2UxXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt7049682/img",
+    "releaseInfo": "2019",
+    "description": ""
+  },
+  {
+    "rank": 40,
+    "id": "tt31806037",
+    "type": "series",
+    "name": "Adolescence",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNGY1YjBiNzMtYWZhNC00OWViLWE0MzItNjc4YzczOGNiM2I0XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt31806037/img",
+    "releaseInfo": "2025",
+    "description": ""
+  },
+  {
+    "rank": 41,
+    "id": "tt1492966",
+    "type": "series",
+    "name": "Louie",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMWI4NDMxNGMtZGUxOS00MjJkLWIxMmItZGE1ODNjMDFjYzZmXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt1492966/img",
+    "releaseInfo": "2010-2015",
+    "description": ""
+  },
+  {
+    "rank": 42,
+    "id": "tt11815682",
+    "type": "series",
+    "name": "Hacks",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjE0MmM5YzktNGY0NS00ZmQ0LWI1YjEtZjY2NDA4ZmZiNGQ2XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt11815682/img",
+    "releaseInfo": "2021-2026",
+    "description": ""
+  },
+  {
+    "rank": 43,
+    "id": "tt2442560",
+    "type": "series",
+    "name": "Peaky Blinders",
+    "poster": "https://m.media-amazon.com/images/M/MV5BOGM0NGY3ZmItOGE2ZC00OWIxLTk0N2EtZWY4Yzg3ZDlhNGI3XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt2442560/img",
+    "releaseInfo": "2013-2022",
+    "description": ""
+  },
+  {
+    "rank": 44,
+    "id": "tt3398228",
+    "type": "series",
+    "name": "BoJack Horseman",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZmMwMDlkNTEtMmQzZS00ODQ0LWJlZmItOTgwYWMwZGM4MzFiXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt3398228/img",
+    "releaseInfo": "2014-2020",
+    "description": ""
+  },
+  {
+    "rank": 45,
+    "id": "tt3428912",
+    "type": "series",
+    "name": "Happy Valley",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNWEzMmI5YjgtMWE3Zi00Y2U4LWE0ODQtYjU4NGJjYzU0Nzc1XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt3428912/img",
+    "releaseInfo": "2014-2023",
+    "description": ""
+  },
+  {
+    "rank": 46,
+    "id": "tt2578560",
+    "type": "series",
+    "name": "Broad City",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMWZiYzAxMWMtMGVmNS00NzhhLTlkMWEtZmNkYjA0MDZhMDQ5XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt2578560/img",
+    "releaseInfo": "2014-2019",
+    "description": ""
+  },
+  {
+    "rank": 47,
+    "id": "tt4093826",
+    "type": "series",
+    "name": "Twin Peaks",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZGU5OTQ2YzctZmE4Zi00OWI0LWJmMDQtNDcxYjJmODBjN2U1XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt4093826/img",
+    "releaseInfo": "2017",
+    "description": ""
+  },
+  {
+    "rank": 48,
+    "id": "tt1856010",
+    "type": "series",
+    "name": "House of Cards",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTQ4MDczNDYwNV5BMl5BanBnXkFtZTcwNjMwMDk5OA@@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt1856010/img",
+    "releaseInfo": "2013-2018",
+    "description": ""
+  },
+  {
+    "rank": 49,
+    "id": "tt9059760",
+    "type": "series",
+    "name": "Normal People",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYWUzNjQ2YmYtNWI3Yi00NzNmLWJjYWYtMDFiM2RjYjNjZWZmXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt9059760/img",
+    "releaseInfo": "2020",
+    "description": ""
+  },
+  {
+    "rank": 50,
+    "id": "tt1266020",
+    "type": "series",
+    "name": "Parks and Recreation",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNDlhMzAwNTAtNTk2NS00MTdkLWE3ZWYtMDU0MTFiYmU2ZTc0XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt1266020/img",
+    "releaseInfo": "2009-2015",
+    "description": ""
+  },
+  {
+    "rank": 51,
+    "id": "tt4955642",
+    "type": "series",
+    "name": "The Good Place",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNjI3ZGRhNDYtNDFjOS00OGFlLTg4NTEtYjZjYTViY2ZiMzBkXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt4955642/img",
+    "releaseInfo": "2016-2020",
+    "description": ""
+  },
+  {
+    "rank": 52,
+    "id": "tt1606375",
+    "type": "series",
+    "name": "Downton Abbey",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYzgzNDVjNjgtNzQxZS00N2E2LTkxNjgtNjIzMGZiM2UwYWQ2XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt1606375/img",
+    "releaseInfo": "2010-2015",
+    "description": ""
+  },
+  {
+    "rank": 53,
+    "id": "tt4574334",
+    "type": "series",
+    "name": "Stranger Things",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjEzMDAxOTUyMV5BMl5BanBnXkFtZTgwNzAxMzYzOTE@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt4574334/img",
+    "releaseInfo": "2016-2025",
+    "description": ""
+  },
+  {
+    "rank": 54,
+    "id": "tt4063800",
+    "type": "series",
+    "name": "The Bureau",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZDk2NDA3MzktNTQyOS00YjY0LWI2ZDgtMWI2MTQ5N2Q1Njg0XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt4063800/img",
+    "releaseInfo": "2015-2020",
+    "description": ""
+  },
+  {
+    "rank": 55,
+    "id": "tt5024912",
+    "type": "series",
+    "name": "Insecure",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYmIyYWZkMjQtOTJhOC00NTE3LTk1MzAtNjhhYjVjYzJhOWNlXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt5024912/img",
+    "releaseInfo": "2016-2021",
+    "description": ""
+  },
+  {
+    "rank": 56,
+    "id": "tt2297757",
+    "type": "series",
+    "name": "Nathan for You",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNDU5OTA3YWUtYTIxYi00MWEwLTljZDEtYjhiYjEwYmJhMGVlXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt2297757/img",
+    "releaseInfo": "2013-2017",
+    "description": ""
+  },
+  {
+    "rank": 57,
+    "id": "tt10050772",
+    "type": "series",
+    "name": "I Think You Should Leave with Tim Robinson",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjg3MzdmMzctNjEyNC00ZDY3LTg1NzUtYzE1MjliYWIyOTg1XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt10050772/img",
+    "releaseInfo": "2019-2023",
+    "description": ""
+  },
+  {
+    "rank": 58,
+    "id": "tt0353049",
+    "type": "series",
+    "name": "Chappelle's Show",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNzgxYTFlMjYtMWM0MC00ZjQzLWJjMjUtNDZhNGE0Yzg2YmRjXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt0353049/img",
+    "releaseInfo": "2003-2006",
+    "description": ""
+  },
+  {
+    "rank": 59,
+    "id": "tt8324422",
+    "type": "series",
+    "name": "PEN15",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZThiMmZjNTMtMTNkYS00YTU3LWI5MWEtZWIzZDkwZjMzMmIwXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt8324422/img",
+    "releaseInfo": "2019-2021",
+    "description": ""
+  },
+  {
+    "rank": 60,
+    "id": "tt0387764",
+    "type": "series",
+    "name": "Peep Show",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNmQ0MGMwNjMtNmEyMC00OTA2LTg4YTEtNjBhNjNkYTgzMmZlXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt0387764/img",
+    "releaseInfo": "2003-2015",
+    "description": ""
+  },
+  {
+    "rank": 61,
+    "id": "tt1353056",
+    "type": "series",
+    "name": "RuPaul's Drag Race",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNzhjNDBkMDktM2IzNC00YTdhLTlkNzYtMGE5ZjNkMjYzYWIyXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt1353056/img",
+    "releaseInfo": "2009-",
+    "description": ""
+  },
+  {
+    "rank": 62,
+    "id": "tt5875444",
+    "type": "series",
+    "name": "Slow Horses",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMmM2NDhmYjktNTIzZC00YjIwLWE1ZmUtNzM1MTNiMTU2NjdjXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt5875444/img",
+    "releaseInfo": "2022-",
+    "description": ""
+  },
+  {
+    "rank": 63,
+    "id": "tt0459159",
+    "type": "series",
+    "name": "The Thick of It",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNTQ0NTdjZTctZWRhMS00YjNmLWIyOWQtMWJjNjJhYTgyOTdjXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt0459159/img",
+    "releaseInfo": "2005-2012",
+    "description": ""
+  },
+  {
+    "rank": 64,
+    "id": "tt2845786",
+    "type": "series",
+    "name": "Anthony Bourdain: Parts Unknown",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjM1MzczMzU4Nl5BMl5BanBnXkFtZTgwNDc3MzcxMjI@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt2845786/img",
+    "releaseInfo": "2013-2018",
+    "description": ""
+  },
+  {
+    "rank": 65,
+    "id": "tt10155688",
+    "type": "series",
+    "name": "Mare of Easttown",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZTcxYWE0ZTQtYzg1Yi00Y2EwLWE4YTEtYTFjMTZmZmRkZjUyXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt10155688/img",
+    "releaseInfo": "2021",
+    "description": ""
+  },
+  {
+    "rank": 66,
+    "id": "tt10802170",
+    "type": "series",
+    "name": "The Rehearsal",
+    "poster": "https://m.media-amazon.com/images/M/MV5BY2IxZDU5YmQtNGRjYi00ZDA1LTljYmYtYzkwYjExZGQ0Yjc2XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt10802170/img",
+    "releaseInfo": "2022-",
+    "description": ""
+  },
+  {
+    "rank": 67,
+    "id": "tt5834204",
+    "type": "series",
+    "name": "The Handmaid's Tale",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMWIxMzk4NmItZmM1YS00ODUyLWFlNjgtZDQ4MzljZTZmZDQ5XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt5834204/img",
+    "releaseInfo": "2017-2025",
+    "description": ""
+  },
+  {
+    "rank": 68,
+    "id": "tt5071412",
+    "type": "series",
+    "name": "Ozark",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZDk1ZTdjOWItNTJmYS00MGIzLThmY2ItZWNiOGY5MzJlNTA5XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt5071412/img",
+    "releaseInfo": "2017-2022",
+    "description": ""
+  },
+  {
+    "rank": 69,
+    "id": "tt0475900",
+    "type": "series",
+    "name": "Anthony Bourdain: No Reservations",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZTJkYTg5MWMtMzk3NC00MGQ3LWJhMGEtMTc2MmVhMGNkMGQ1XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt0475900/img",
+    "releaseInfo": "2005-2012",
+    "description": ""
+  },
+  {
+    "rank": 70,
+    "id": "tt0286486",
+    "type": "series",
+    "name": "The Shield",
+    "poster": "https://m.media-amazon.com/images/M/MV5BN2Y2NzUzZjItNjNjYy00ZjA0LTllYWEtZGE2NjY0NDg1YzRlXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt0286486/img",
+    "releaseInfo": "2002-2008",
+    "description": ""
+  },
+  {
+    "rank": 71,
+    "id": "tt14403178",
+    "type": "series",
+    "name": "Beef",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMGNlNDkyYzItNTg5Yy00NGFiLWJhYTctODE5NjNkYjk4ZDUwXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt14403178/img",
+    "releaseInfo": "2023-",
+    "description": ""
+  },
+  {
+    "rank": 72,
+    "id": "tt10919420",
+    "type": "series",
+    "name": "Squid Game",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMDcxYjg1OTctYmUxZi00ZjhjLWIwNTMtNmI2M2Y4OTU1YWU2XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt10919420/img",
+    "releaseInfo": "2021-2025",
+    "description": ""
+  },
+  {
+    "rank": 73,
+    "id": "tt5348176",
+    "type": "series",
+    "name": "Barry",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYzdlYWZkNjQtMWYwNi00YjNkLTljYjgtZjRhMmQ2YTQ1MWQ0XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt5348176/img",
+    "releaseInfo": "2018-2023",
+    "description": ""
+  },
+  {
+    "rank": 74,
+    "id": "tt14452776",
+    "type": "series",
+    "name": "The Bear",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjk2NWI5OTctODcwYy00NGRmLWFmN2YtOTZiNzFiYjVlODBkXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt14452776/img",
+    "releaseInfo": "2022-2026",
+    "description": ""
+  },
+  {
+    "rank": 75,
+    "id": "tt10986410",
+    "type": "series",
+    "name": "Ted Lasso",
+    "poster": "https://m.media-amazon.com/images/M/MV5BM2ZlYTU0YWUtMzY4OC00N2JkLTk1ZGQtN2UxNWJhMTBkMzM4XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt10986410/img",
+    "releaseInfo": "2020-",
+    "description": ""
+  },
+  {
+    "rank": 76,
+    "id": "tt12759100",
+    "type": "series",
+    "name": "Somebody Somewhere",
+    "poster": "https://m.media-amazon.com/images/M/MV5BM2U3ZThlODMtMGU0YS00ZDVkLWE2ZmItNmI0ZDM5MDNiMGJkXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt12759100/img",
+    "releaseInfo": "2022-2024",
+    "description": ""
+  },
+  {
+    "rank": 77,
+    "id": "tt1442437",
+    "type": "series",
+    "name": "Modern Family",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYzFlOWFjNzQtODViNC00NzgzLThhZmItZTc1N2VlZDgwODUwXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt1442437/img",
+    "releaseInfo": "2009-2020",
+    "description": ""
+  },
+  {
+    "rank": 78,
+    "id": "tt0472954",
+    "type": "series",
+    "name": "It's Always Sunny in Philadelphia",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZjkxZWUzNGEtNWFjZi00MDJmLWI2ODctMDRiZTdhY2RiNmZkXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt0472954/img",
+    "releaseInfo": "2005-",
+    "description": ""
+  },
+  {
+    "rank": 79,
+    "id": "tt1442462",
+    "type": "series",
+    "name": "The Good Wife",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTI2OTk4MDk3OF5BMl5BanBnXkFtZTcwMTY3NTc3Mg@@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt1442462/img",
+    "releaseInfo": "2009-2016",
+    "description": ""
+  },
+  {
+    "rank": 80,
+    "id": "tt10801534",
+    "type": "series",
+    "name": "How to with John Wilson",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYTQwMTMyODYtNzkwOC00MmM0LTkyNGItNDAxYjE0Yjc1NjhhXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt10801534/img",
+    "releaseInfo": "2020-2023",
+    "description": ""
+  },
+  {
+    "rank": 81,
+    "id": "tt10048342",
+    "type": "series",
+    "name": "The Queen's Gambit",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMmRlNjQxNWQtMjk1OS00N2QxLTk0YWQtMzRhYjY5YTFhNjMxXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt10048342/img",
+    "releaseInfo": "2020",
+    "description": ""
+  },
+  {
+    "rank": 82,
+    "id": "tt4370596",
+    "type": "series",
+    "name": "Better Things",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTYwNTMwNDU5M15BMl5BanBnXkFtZTgwMjA3NzU0NzM@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt4370596/img",
+    "releaseInfo": "2016-2022",
+    "description": ""
+  },
+  {
+    "rank": 83,
+    "id": "tt1489428",
+    "type": "series",
+    "name": "Justified",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZGIzNmFlMzgtYWY0MC00NjFmLWJhMGItZTM2YjVlZjY3ZjBlXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt1489428/img",
+    "releaseInfo": "2010-2015",
+    "description": ""
+  },
+  {
+    "rank": 84,
+    "id": "tt0795176",
+    "type": "series",
+    "name": "Planet Earth",
+    "poster": "https://m.media-amazon.com/images/M/MV5BY2NjNDUzOTgtMDFmNC00ZGQ4LWE5MDctMzczNGVlOGU1N2MyXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt0795176/img",
+    "releaseInfo": "2006",
+    "description": ""
+  },
+  {
+    "rank": 85,
+    "id": "tt1877368",
+    "type": "series",
+    "name": "The Great British Baking Show",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNTc3MzZkZTQtMWM3MC00MThmLTlmNjctOWEwY2NjMzM2NTllXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt1877368/img",
+    "releaseInfo": "2010-",
+    "description": ""
+  },
+  {
+    "rank": 86,
+    "id": "tt2788316",
+    "type": "series",
+    "name": "Shogun",
+    "poster": "https://images.metahub.space/poster/small/tt2788316/img",
+    "background": "https://images.metahub.space/background/medium/tt2788316/img",
+    "releaseInfo": "2024\u20132026",
+    "description": "When a mysterious European ship is found marooned in a nearby Japanese fishing village, Lord Yoshii Toranaga discovers secrets that could tip the scales of power and devastate his enemies."
+  },
+  {
+    "rank": 87,
+    "id": "tt13623580",
+    "type": "series",
+    "name": "Reservation Dogs",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNjA5ZTdkOWYtNmMzYy00ZmM0LTg3YWYtNDgyODY5OTIxN2RlXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt13623580/img",
+    "releaseInfo": "2021-2023",
+    "description": ""
+  },
+  {
+    "rank": 88,
+    "id": "tt0773262",
+    "type": "series",
+    "name": "Dexter",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNTE5ZGI2N2UtYmFiMi00ZGIxLWI1ZTMtYWJkZDYxNDZiOTQwXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt0773262/img",
+    "releaseInfo": "2006-2013",
+    "description": ""
+  },
+  {
+    "rank": 89,
+    "id": "tt13649112",
+    "type": "series",
+    "name": "Baby Reindeer",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNzlmY2E1OTUtMjEzZi00Y2YxLWI5NmMtZmZhOWZkMjIzMDJiXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt13649112/img",
+    "releaseInfo": "2024",
+    "description": ""
+  },
+  {
+    "rank": 90,
+    "id": "tt0866442",
+    "type": "series",
+    "name": "Eastbound & Down",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjAwNDU2NTM4Nl5BMl5BanBnXkFtZTcwMzg0NTc4Mw@@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt0866442/img",
+    "releaseInfo": "2009-2013",
+    "description": ""
+  },
+  {
+    "rank": 91,
+    "id": "tt4374208",
+    "type": "series",
+    "name": "Catastrophe",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNzMwNTI2MzIzM15BMl5BanBnXkFtZTgwODUxMjE0NzM@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt4374208/img",
+    "releaseInfo": "2015-2019",
+    "description": ""
+  },
+  {
+    "rank": 92,
+    "id": "tt2401256",
+    "type": "series",
+    "name": "The Night Of",
+    "poster": "https://m.media-amazon.com/images/M/MV5BODc1YTJmNTAtMjVlMS00ZTMxLTliNjYtODJjYzUwZWQ5M2ExXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt2401256/img",
+    "releaseInfo": "2016",
+    "description": ""
+  },
+  {
+    "rank": 93,
+    "id": "tt10574236",
+    "type": "series",
+    "name": "Station Eleven",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNWJhMTg4NTItYzNhYy00ZDViLTk0NTAtOGMyZTE4YWUxZmM3XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt10574236/img",
+    "releaseInfo": "2021-2022",
+    "description": ""
+  },
+  {
+    "rank": 94,
+    "id": "tt17491088",
+    "type": "series",
+    "name": "The Diplomat",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMmY4YWMyOGItMzA1MC00ZjY0LWEyM2QtZWFmNGNhNDZlZjk5XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt17491088/img",
+    "releaseInfo": "2023-",
+    "description": ""
+  },
+  {
+    "rank": 95,
+    "id": "tt0412142",
+    "type": "series",
+    "name": "House",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjgxYjAwNmMtYTAwZC00YmQxLWJlOTMtMWM0NGJmNDE0YmI2XkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt0412142/img",
+    "releaseInfo": "2004-2012",
+    "description": ""
+  },
+  {
+    "rank": 96,
+    "id": "tt2543312",
+    "type": "series",
+    "name": "Halt and Catch Fire",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZTRkNzQwMjAtMzg5Mi00ZDQwLThmYWYtNmQwMDFiYmIxOWRhXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt2543312/img",
+    "releaseInfo": "2014-2017",
+    "description": ""
+  },
+  {
+    "rank": 97,
+    "id": "tt1439629",
+    "type": "series",
+    "name": "Community",
+    "poster": "https://m.media-amazon.com/images/M/MV5BOGIwYzNmYTktZWExZC00MzAyLTk4NTItODgwZmIyNWZhNDEyXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt1439629/img",
+    "releaseInfo": "2009-2015",
+    "description": ""
+  },
+  {
+    "rank": 98,
+    "id": "tt4635282",
+    "type": "series",
+    "name": "The OA",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTY5OTkwNDkzOF5BMl5BanBnXkFtZTgwMDEyNzI1NzM@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt4635282/img",
+    "releaseInfo": "2016-2019",
+    "description": ""
+  },
+  {
+    "rank": 99,
+    "id": "tt0238784",
+    "type": "series",
+    "name": "Gilmore Girls",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMzM2OGZjMTItNzc2OS00YzA4LWE0ZTUtYzE5NjU0MTIyZjcyXkEyXkFqcGc@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt0238784/img",
+    "releaseInfo": "2000-2007",
+    "description": ""
+  },
+  {
+    "rank": 100,
+    "id": "tt1837576",
+    "type": "series",
+    "name": "Scandal",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTUxNzk3MDQyNl5BMl5BanBnXkFtZTgwNDgxMDkyMzI@._V1_SX250.jpg",
+    "background": "https://images.metahub.space/background/medium/tt1837576/img",
+    "releaseInfo": "2012-2018",
+    "description": ""
+  }
+]
