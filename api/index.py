@@ -106,7 +106,56 @@ if os.path.exists(anime_path):
             else:
                 ANIME_SERIES_METAS.append(formatted)
 
-# Manifest 1: Anime Addon
+# 5. Load Cartoons
+cartoons_path = os.path.join(base_dir, "cartoons_metas.json")
+if not os.path.exists(cartoons_path):
+    cartoons_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "cartoons_metas.json")
+
+CARTOON_SERIES_METAS = []
+CARTOON_MOVIE_METAS = []
+
+if os.path.exists(cartoons_path):
+    with open(cartoons_path, "r", encoding="utf-8") as f:
+        raw_cartoons = json.load(f)
+        for item in raw_cartoons:
+            formatted = {
+                "id": item["id"],
+                "type": item.get("type", "series"),
+                "name": f"#{item['rank']} - {item['name']}",
+                "poster": item.get("poster"),
+                "background": item.get("background"),
+                "releaseInfo": str(item.get("releaseInfo", "")),
+                "description": item.get("description", "")
+            }
+            if item.get("type") == "movie":
+                CARTOON_MOVIE_METAS.append(formatted)
+            else:
+                CARTOON_SERIES_METAS.append(formatted)
+
+# Manifest 1: Cartoons Addon
+MANIFEST_CARTOONS = {
+    "id": "org.antigravity.curatedcartoonsaddon",
+    "version": "1.0.0",
+    "name": "100 Curated Cartoons & Animated Movies",
+    "description": "Custom Stremio Addon featuring 100 Classic, Modern, and Masterpiece Cartoons & Animated Movies.",
+    "types": ["series", "movie"],
+    "catalogs": [
+        {
+            "type": "series",
+            "id": "curated_cartoons_series",
+            "name": "100 Curated Cartoon Series"
+        },
+        {
+            "type": "movie",
+            "id": "curated_cartoons_movies",
+            "name": "Animated Movies Masterpieces"
+        }
+    ],
+    "resources": ["catalog"],
+    "idPrefixes": ["tt"]
+}
+
+# Manifest 2: Anime Addon
 MANIFEST_ANIME = {
     "id": "org.antigravity.underratedanimeaddon",
     "version": "1.0.0",
@@ -129,7 +178,7 @@ MANIFEST_ANIME = {
     "idPrefixes": ["tt"]
 }
 
-# Manifest 2: Underrated Indian Films Addon
+# Manifest 3: Underrated Indian Films Addon
 MANIFEST_INDIAN = {
     "id": "org.antigravity.underratedindianfilmsaddon",
     "version": "1.0.0",
@@ -147,7 +196,7 @@ MANIFEST_INDIAN = {
     "idPrefixes": ["tt"]
 }
 
-# Manifest 3: A24 & Underrated Hollywood Movies Addon
+# Manifest 4: A24 & Underrated Hollywood Movies Addon
 MANIFEST_MOVIES = {
     "id": "org.antigravity.curatedmoviesaddon",
     "version": "1.0.0",
@@ -170,7 +219,7 @@ MANIFEST_MOVIES = {
     "idPrefixes": ["tt"]
 }
 
-# Manifest 4: TV Shows Addon
+# Manifest 5: TV Shows Addon
 MANIFEST_TV = {
     "id": "org.antigravity.top100tvshowsaddon",
     "version": "1.0.0",
@@ -194,6 +243,9 @@ def home():
     host = request.headers.get('Host', 'localhost')
     scheme = request.headers.get('X-Forwarded-Proto', 'https')
     
+    cartoons_manifest_url = f"{scheme}://{host}/cartoons/manifest.json"
+    cartoons_stremio_link = f"stremio://{host}/cartoons/manifest.json"
+
     anime_manifest_url = f"{scheme}://{host}/anime/manifest.json"
     anime_stremio_link = f"stremio://{host}/anime/manifest.json"
 
@@ -228,28 +280,35 @@ def home():
         <p style="margin-bottom: 30px;">Choose and install each addon independently into your Stremio client.</p>
         
         <div class="card">
-            <h2>⛩️ Addon 1: 100 Underrated Anime & Movies</h2>
+            <h2>🎨 Addon 1: 100 Curated Cartoons & Animated Movies</h2>
+            <p>100 Classic & Modern Cartoon Series and Animated Movies (Disney, Pixar, DreamWorks, Cartoon Network).</p>
+            <a class="btn" href="{cartoons_stremio_link}">➕ Install Cartoons Addon</a>
+            <code>{cartoons_manifest_url}</code>
+        </div>
+
+        <div class="card">
+            <h2>⛩️ Addon 2: 100 Underrated Anime & Movies</h2>
             <p>100 Underrated Anime Series, OVAs, and Movies across all genres.</p>
             <a class="btn" href="{anime_stremio_link}">➕ Install Anime Addon</a>
             <code>{anime_manifest_url}</code>
         </div>
 
         <div class="card">
-            <h2>🇮🇳 Addon 2: 50 Underrated Indian Films</h2>
+            <h2>🇮🇳 Addon 3: 50 Underrated Indian Films</h2>
             <p>50 Underrated Indian Films across Hindi, Malayalam, Tamil, Bengali, Marathi, Assamese, and classic cinema.</p>
             <a class="btn" href="{indian_stremio_link}">➕ Install Indian Movies Addon</a>
             <code>{indian_manifest_url}</code>
         </div>
 
         <div class="card">
-            <h2>🎬 Addon 3: A24 & Underrated Movies</h2>
+            <h2>🎬 Addon 4: A24 & Underrated Movies</h2>
             <p>Includes <b>50 Notable A24 Films</b> and <b>50 Underrated Gems (2010–2026)</b>.</p>
             <a class="btn" href="{movies_stremio_link}">➕ Install Hollywood Movies Addon</a>
             <code>{movies_manifest_url}</code>
         </div>
 
         <div class="card">
-            <h2>🍿 Addon 4: Top 100 TV Shows</h2>
+            <h2>🍿 Addon 5: Top 100 TV Shows</h2>
             <p>Includes the <b>Top 100 TV Shows of the 21st Century</b> (NYT List).</p>
             <a class="btn" href="{tv_stremio_link}">➕ Install TV Shows Addon</a>
             <code>{tv_manifest_url}</code>
@@ -258,6 +317,12 @@ def home():
 </body>
 </html>"""
     return html
+
+# Routes for Cartoons Addon
+@app.route('/cartoons/manifest.json')
+@app.route('/cartoons/manifest')
+def cartoons_manifest():
+    return jsonify(MANIFEST_CARTOONS)
 
 # Routes for Anime Addon
 @app.route('/anime/manifest.json')
@@ -297,7 +362,11 @@ def catalog(type_, id_, prefix=None, skip_str=None):
             skip = 0
 
     metas = []
-    if id_ == "underrated_anime_series":
+    if id_ == "curated_cartoons_series":
+        metas = CARTOON_SERIES_METAS
+    elif id_ == "curated_cartoons_movies":
+        metas = CARTOON_MOVIE_METAS
+    elif id_ == "underrated_anime_series":
         metas = ANIME_SERIES_METAS
     elif id_ == "underrated_anime_movies":
         metas = ANIME_MOVIE_METAS
