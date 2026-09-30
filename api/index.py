@@ -5,6 +5,8 @@ import urllib.request
 import urllib.parse
 import os
 import time
+import datetime
+import ssl
 from concurrent.futures import ThreadPoolExecutor
 
 app = Flask(__name__)
@@ -255,6 +257,82 @@ def fetch_live_trending_indian_movies():
 
     return metas
 
+def fetch_live_new_indian_movies():
+    metas = []
+    today = datetime.date.today().isoformat()
+    start_date = (datetime.date.today() - datetime.timedelta(days=365)).isoformat()
+    ctx = ssl.create_default_context()
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE
+    try:
+        url = f"https://api.themoviedb.org/3/discover/movie?api_key={TMDB_KEY}&with_origin_country=IN&primary_release_date.gte={start_date}&primary_release_date.lte={today}&sort_by=popularity.desc&page=1"
+        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+        with urllib.request.urlopen(req, context=ctx, timeout=6) as resp:
+            data = json.loads(resp.read().decode('utf-8'))
+            results = data.get('results', [])
+            
+            movies_to_resolve = []
+            for rank, movie in enumerate(results[:20], 1):
+                m_name = movie.get('title')
+                if m_name:
+                    movies_to_resolve.append((rank, m_name, "movie"))
+            
+            with ThreadPoolExecutor(max_workers=5) as executor:
+                metas = [m for m in list(executor.map(resolve_cinemeta_item, movies_to_resolve)) if m]
+    except Exception as e:
+        print(f"TMDb New Movie fetch warning: {e}")
+    
+    if len(metas) < 15:
+        fallback_tuples = [(i+1, name, "movie") for i, name in enumerate(TOP_INDIAN_OTT_MOVIES)]
+        with ThreadPoolExecutor(max_workers=5) as executor:
+            f_metas = [m for m in list(executor.map(resolve_cinemeta_item, fallback_tuples)) if m]
+        
+        existing_ids = set(m['id'] for m in metas)
+        for fm in f_metas:
+            if fm['id'] not in existing_ids:
+                metas.append(fm)
+                existing_ids.add(fm['id'])
+
+    return metas
+
+def fetch_live_new_indian_series():
+    metas = []
+    today = datetime.date.today().isoformat()
+    start_date = (datetime.date.today() - datetime.timedelta(days=365)).isoformat()
+    ctx = ssl.create_default_context()
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE
+    try:
+        url = f"https://api.themoviedb.org/3/discover/tv?api_key={TMDB_KEY}&with_origin_country=IN&first_air_date.gte={start_date}&first_air_date.lte={today}&sort_by=popularity.desc&page=1"
+        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+        with urllib.request.urlopen(req, context=ctx, timeout=6) as resp:
+            data = json.loads(resp.read().decode('utf-8'))
+            results = data.get('results', [])
+            
+            shows_to_resolve = []
+            for rank, show in enumerate(results[:20], 1):
+                s_name = show.get('name')
+                if s_name:
+                    shows_to_resolve.append((rank, s_name, "series"))
+            
+            with ThreadPoolExecutor(max_workers=5) as executor:
+                metas = [m for m in list(executor.map(resolve_cinemeta_item, shows_to_resolve)) if m]
+    except Exception as e:
+        print(f"TMDb New Series fetch warning: {e}")
+    
+    if len(metas) < 15:
+        fallback_tuples = [(i+1, name, "series") for i, name in enumerate(TOP_INDIAN_OTT_SERIES)]
+        with ThreadPoolExecutor(max_workers=5) as executor:
+            f_metas = [m for m in list(executor.map(resolve_cinemeta_item, fallback_tuples)) if m]
+        
+        existing_ids = set(m['id'] for m in metas)
+        for fm in f_metas:
+            if fm['id'] not in existing_ids:
+                metas.append(fm)
+                existing_ids.add(fm['id'])
+
+    return metas
+
 def get_trending_indian_cached(catalog_id):
     now = time.time()
     if catalog_id in DYNAMIC_CACHE:
@@ -267,6 +345,10 @@ def get_trending_indian_cached(catalog_id):
         fresh_metas = fetch_live_trending_indian_series()
     elif catalog_id == "trending_indian_movies":
         fresh_metas = fetch_live_trending_indian_movies()
+    elif catalog_id == "new_indian_series":
+        fresh_metas = fetch_live_new_indian_series()
+    elif catalog_id == "new_indian_movies":
+        fresh_metas = fetch_live_new_indian_movies()
         
     if fresh_metas:
         DYNAMIC_CACHE[catalog_id] = (fresh_metas, now)
@@ -408,6 +490,29 @@ MANIFEST_TV = {
     "idPrefixes": ["tt"]
 }
 
+# Manifest 7: New Indian Movie & Series Releases Addon (Daily Refresh)
+MANIFEST_NEW_INDIAN = {
+    "id": "org.antigravity.newindianreleasesaddon",
+    "version": "1.0.0",
+    "name": "New Indian Movie & Series Releases (Daily)",
+    "description": "Live Stremio Addon featuring newly released Indian Movies, Web Series & OTT Releases, refreshed automatically every 24 hours.",
+    "types": ["movie", "series"],
+    "catalogs": [
+        {
+            "type": "movie",
+            "id": "new_indian_movies",
+            "name": "🆕 New Indian Movies (2024-2026)"
+        },
+        {
+            "type": "series",
+            "id": "new_indian_series",
+            "name": "🆕 New Indian Series & OTT (2024-2026)"
+        }
+    ],
+    "resources": ["catalog"],
+    "idPrefixes": ["tt"]
+}
+
 # -------------------------------------------------------------
 # 4. ROUTE HANDLERS
 # -------------------------------------------------------------
@@ -436,6 +541,9 @@ def home():
     tv_manifest_url = f"{scheme}://{host}/tv/manifest.json"
     tv_stremio_link = f"stremio://{host}/tv/manifest.json"
     
+    new_indian_manifest_url = f"{scheme}://{host}/new-indian/manifest.json"
+    new_indian_stremio_link = f"stremio://{host}/new-indian/manifest.json"
+    
     html = f"""<!DOCTYPE html>
 <html>
 <head>
@@ -450,6 +558,7 @@ def home():
         .btn {{ display: inline-block; background: #7b5bf2; color: #fff; text-decoration: none; padding: 12px 24px; border-radius: 10px; font-weight: bold; font-size: 15px; margin-top: 15px; transition: transform 0.2s; }}
         .btn:hover {{ transform: scale(1.03); background: #6945e0; }}
         .badge {{ background: #ff9800; color: #000; font-size: 11px; padding: 3px 8px; border-radius: 6px; font-weight: bold; margin-left: 8px; text-transform: uppercase; }}
+        .badge-green {{ background: #00e676; color: #000; font-size: 11px; padding: 3px 8px; border-radius: 6px; font-weight: bold; margin-left: 8px; text-transform: uppercase; }}
         code {{ background: #121218; padding: 10px 15px; border-radius: 8px; display: block; margin-top: 15px; word-break: break-all; color: #00e5ff; font-family: monospace; font-size: 13px; }}
     </style>
 </head>
@@ -458,43 +567,50 @@ def home():
         <h1>🎬 Custom Stremio Addons Directory</h1>
         <p style="margin-bottom: 30px;">Choose and install each addon independently into your Stremio client.</p>
         
+        <div class="card" style="border-color: #00e676;">
+            <h2>🆕 Addon 1: New Indian Movie & Series Releases <span class="badge-green">Live Daily Refresh</span></h2>
+            <p>Refreshes automatically every 24 hours with newly released Indian Movies, Web Series & OTT Releases (2024-2026).</p>
+            <a class="btn" style="background: #00e676; color: #000;" href="{new_indian_stremio_link}">➕ Install New Indian Releases Addon</a>
+            <code>{new_indian_manifest_url}</code>
+        </div>
+
         <div class="card" style="border-color: #ff9800;">
-            <h2>🔥 Addon 1: Trending Indian Movies, Series & OTT of the Day <span class="badge">Live Daily Refresh</span></h2>
+            <h2>🔥 Addon 2: Trending Indian Movies, Series & OTT of the Day <span class="badge">Live Daily Refresh</span></h2>
             <p>Refreshes automatically every 24 hours with live daily trending Indian Movies, Web Series & OTT Releases (Kalki 2898 AD, Panchayat, Stree 2, Mirzapur, Farzi, etc.).</p>
             <a class="btn" style="background: #ff9800; color: #000;" href="{t_india_stremio_link}">➕ Install Trending India Addon</a>
             <code>{t_india_manifest_url}</code>
         </div>
 
         <div class="card">
-            <h2>🎨 Addon 2: 100 Curated Cartoons & Animated Movies</h2>
+            <h2>🎨 Addon 3: 100 Curated Cartoons & Animated Movies</h2>
             <p>100 Classic & Modern Cartoon Series and Animated Movies (Disney, Pixar, DreamWorks, Cartoon Network).</p>
             <a class="btn" href="{cartoons_stremio_link}">➕ Install Cartoons Addon</a>
             <code>{cartoons_manifest_url}</code>
         </div>
 
         <div class="card">
-            <h2>⛩️ Addon 3: 100 Underrated Anime & Movies</h2>
+            <h2>⛩️ Addon 4: 100 Underrated Anime & Movies</h2>
             <p>100 Underrated Anime Series, OVAs, and Movies across all genres.</p>
             <a class="btn" href="{anime_stremio_link}">➕ Install Anime Addon</a>
             <code>{anime_manifest_url}</code>
         </div>
 
         <div class="card">
-            <h2>🇮🇳 Addon 4: 50 Underrated Indian Films</h2>
+            <h2>🇮🇳 Addon 5: 50 Underrated Indian Films</h2>
             <p>50 Underrated Indian Films across Hindi, Malayalam, Tamil, Bengali, Marathi, Assamese, and classic cinema.</p>
             <a class="btn" href="{indian_stremio_link}">➕ Install Indian Movies Addon</a>
             <code>{indian_manifest_url}</code>
         </div>
 
         <div class="card">
-            <h2>🎬 Addon 5: A24 & Underrated Movies</h2>
+            <h2>🎬 Addon 6: A24 & Underrated Movies</h2>
             <p>Includes <b>50 Notable A24 Films</b> and <b>50 Underrated Gems (2010–2026)</b>.</p>
             <a class="btn" href="{movies_stremio_link}">➕ Install Hollywood Movies Addon</a>
             <code>{movies_manifest_url}</code>
         </div>
 
         <div class="card">
-            <h2>🍿 Addon 6: Top 100 TV Shows</h2>
+            <h2>🍿 Addon 7: Top 100 TV Shows</h2>
             <p>Includes the <b>Top 100 TV Shows of the 21st Century</b> (NYT List).</p>
             <a class="btn" href="{tv_stremio_link}">➕ Install TV Shows Addon</a>
             <code>{tv_manifest_url}</code>
@@ -503,6 +619,12 @@ def home():
 </body>
 </html>"""
     return html
+
+# Routes for New Indian Releases Addon
+@app.route('/new-indian/manifest.json')
+@app.route('/new-indian/manifest')
+def new_indian_manifest():
+    return jsonify(MANIFEST_NEW_INDIAN)
 
 # Routes for Trending Indian Movies & Series Addon
 @app.route('/trending-india/manifest.json')
@@ -555,7 +677,11 @@ def catalog(type_, id_, prefix=None, skip_str=None):
             skip = 0
 
     metas = []
-    if id_ == "trending_indian_series":
+    if id_ == "new_indian_series":
+        metas = get_trending_indian_cached("new_indian_series")
+    elif id_ == "new_indian_movies":
+        metas = get_trending_indian_cached("new_indian_movies")
+    elif id_ == "trending_indian_series":
         metas = get_trending_indian_cached("trending_indian_series")
     elif id_ == "trending_indian_movies":
         metas = get_trending_indian_cached("trending_indian_movies")
