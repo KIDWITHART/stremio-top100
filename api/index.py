@@ -134,7 +134,7 @@ if os.path.exists(cartoons_path):
                 "background": item.get("background"),
                 "releaseInfo": str(item.get("releaseInfo", "")),
                 "description": item.get("description", "")
-            })
+            }
             if item.get("type") == "movie":
                 CARTOON_MOVIE_METAS.append(formatted)
             else:
@@ -183,7 +183,6 @@ def resolve_cinemeta_show(show_tuple):
 
 def fetch_live_trending_india():
     metas = []
-    # 1. Try TMDb Discover API
     try:
         url = f"https://api.themoviedb.org/3/discover/tv?api_key={TMDB_KEY}&with_origin_country=IN&sort_by=popularity.desc&page=1"
         req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
@@ -202,13 +201,11 @@ def fetch_live_trending_india():
     except Exception as e:
         print(f"TMDb live fetch warning: {e}")
     
-    # 2. Fallback / Augment with top Indian OTT series if needed
     if len(metas) < 15:
         fallback_tuples = [(i+1, name) for i, name in enumerate(TOP_INDIAN_OTT_SERIES)]
         with ThreadPoolExecutor(max_workers=5) as executor:
             f_metas = [m for m in list(executor.map(resolve_cinemeta_show, fallback_tuples)) if m]
         
-        # Deduplicate
         existing_ids = set(m['id'] for m in metas)
         for fm in f_metas:
             if fm['id'] not in existing_ids:
