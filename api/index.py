@@ -68,7 +68,7 @@ if os.path.exists(movie_path):
                 "description": item.get("description", "")
             })
 
-# Indian Movies
+# Indian Movies (Static 50 Underrated)
 indian_path = os.path.join(base_dir, "indian_movies_metas.json")
 if not os.path.exists(indian_path):
     indian_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "indian_movies_metas.json")
@@ -141,7 +141,7 @@ if os.path.exists(cartoons_path):
                 CARTOON_SERIES_METAS.append(formatted)
 
 # -------------------------------------------------------------
-# 2. DYNAMIC TRENDING INDIAN SERIES FETCHER & CACHE (DAILY REFRESH)
+# 2. DYNAMIC TRENDING INDIAN MOVIES & SERIES FETCHER (DAILY REFRESH)
 # -------------------------------------------------------------
 
 TMDB_KEY = "4ef0d7355d9ffb5151e987764708ce96"
@@ -157,10 +157,18 @@ TOP_INDIAN_OTT_SERIES = [
     "Heeramandi: The Diamond Bazaar", "Taaza Khabar", "Grahan", "The Railway Men"
 ]
 
-def resolve_cinemeta_show(show_tuple):
-    rank, name = show_tuple
+TOP_INDIAN_OTT_MOVIES = [
+    "Kalki 2898 AD", "Stree 2", "Maharaja", "Manjummel Boys", "Aavesham", 
+    "The Greatest of All Time", "Animal", "RRR", "Jawan", "Jailer", 
+    "Leo", "Salaar: Part 1 - Ceasefire", "Dunki", "Premalu", "Bramayugam", 
+    "Article 370", "Crew", "Shaitaan", "Srikanth", "Kantara", "K.G.F: Chapter 2",
+    "Pushpa: The Rise", "Drishyam 2", "12th Fail", "Lapataa Misses", "Amar Singh Chamkila"
+]
+
+def resolve_cinemeta_item(tuple_item):
+    rank, name, item_type = tuple_item
     encoded = urllib.parse.quote(name)
-    url = f"https://v3-cinemeta.strem.io/catalog/series/top/search={encoded}.json"
+    url = f"https://v3-cinemeta.strem.io/catalog/{item_type}/top/search={encoded}.json"
     req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
     try:
         with urllib.request.urlopen(req, timeout=4) as resp:
@@ -170,7 +178,7 @@ def resolve_cinemeta_show(show_tuple):
                 best = metas[0]
                 return {
                     "id": best['id'],
-                    "type": "series",
+                    "type": item_type,
                     "name": f"#{rank} - {best.get('name', name)}",
                     "poster": best.get('poster'),
                     "background": best.get('background'),
@@ -181,7 +189,7 @@ def resolve_cinemeta_show(show_tuple):
         pass
     return None
 
-def fetch_live_trending_india():
+def fetch_live_trending_indian_series():
     metas = []
     try:
         url = f"https://api.themoviedb.org/3/discover/tv?api_key={TMDB_KEY}&with_origin_country=IN&sort_by=popularity.desc&page=1"
@@ -194,17 +202,17 @@ def fetch_live_trending_india():
             for rank, show in enumerate(results[:20], 1):
                 s_name = show.get('name')
                 if s_name:
-                    shows_to_resolve.append((rank, s_name))
+                    shows_to_resolve.append((rank, s_name, "series"))
             
             with ThreadPoolExecutor(max_workers=5) as executor:
-                metas = [m for m in list(executor.map(resolve_cinemeta_show, shows_to_resolve)) if m]
+                metas = [m for m in list(executor.map(resolve_cinemeta_item, shows_to_resolve)) if m]
     except Exception as e:
-        print(f"TMDb live fetch warning: {e}")
+        print(f"TMDb TV fetch warning: {e}")
     
     if len(metas) < 15:
-        fallback_tuples = [(i+1, name) for i, name in enumerate(TOP_INDIAN_OTT_SERIES)]
+        fallback_tuples = [(i+1, name, "series") for i, name in enumerate(TOP_INDIAN_OTT_SERIES)]
         with ThreadPoolExecutor(max_workers=5) as executor:
-            f_metas = [m for m in list(executor.map(resolve_cinemeta_show, fallback_tuples)) if m]
+            f_metas = [m for m in list(executor.map(resolve_cinemeta_item, fallback_tuples)) if m]
         
         existing_ids = set(m['id'] for m in metas)
         for fm in f_metas:
@@ -214,39 +222,81 @@ def fetch_live_trending_india():
 
     return metas
 
-def get_trending_indian_series_cached():
+def fetch_live_trending_indian_movies():
+    metas = []
+    try:
+        url = f"https://api.themoviedb.org/3/discover/movie?api_key={TMDB_KEY}&with_origin_country=IN&sort_by=popularity.desc&page=1"
+        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+        with urllib.request.urlopen(req, timeout=6) as resp:
+            data = json.loads(resp.read().decode('utf-8'))
+            results = data.get('results', [])
+            
+            movies_to_resolve = []
+            for rank, movie in enumerate(results[:20], 1):
+                m_name = movie.get('title')
+                if m_name:
+                    movies_to_resolve.append((rank, m_name, "movie"))
+            
+            with ThreadPoolExecutor(max_workers=5) as executor:
+                metas = [m for m in list(executor.map(resolve_cinemeta_item, movies_to_resolve)) if m]
+    except Exception as e:
+        print(f"TMDb Movie fetch warning: {e}")
+    
+    if len(metas) < 15:
+        fallback_tuples = [(i+1, name, "movie") for i, name in enumerate(TOP_INDIAN_OTT_MOVIES)]
+        with ThreadPoolExecutor(max_workers=5) as executor:
+            f_metas = [m for m in list(executor.map(resolve_cinemeta_item, fallback_tuples)) if m]
+        
+        existing_ids = set(m['id'] for m in metas)
+        for fm in f_metas:
+            if fm['id'] not in existing_ids:
+                metas.append(fm)
+                existing_ids.add(fm['id'])
+
+    return metas
+
+def get_trending_indian_cached(catalog_id):
     now = time.time()
-    cache_key = "trending_indian_series"
-    if cache_key in DYNAMIC_CACHE:
-        cached_data, timestamp = DYNAMIC_CACHE[cache_key]
+    if catalog_id in DYNAMIC_CACHE:
+        cached_data, timestamp = DYNAMIC_CACHE[catalog_id]
         if now - timestamp < 43200: # 12 hours TTL (Refreshes automatically every day!)
             return cached_data
     
-    fresh_metas = fetch_live_trending_india()
+    fresh_metas = []
+    if catalog_id == "trending_indian_series":
+        fresh_metas = fetch_live_trending_indian_series()
+    elif catalog_id == "trending_indian_movies":
+        fresh_metas = fetch_live_trending_indian_movies()
+        
     if fresh_metas:
-        DYNAMIC_CACHE[cache_key] = (fresh_metas, now)
+        DYNAMIC_CACHE[catalog_id] = (fresh_metas, now)
         return fresh_metas
     
-    if cache_key in DYNAMIC_CACHE:
-        return DYNAMIC_CACHE[cache_key][0]
+    if catalog_id in DYNAMIC_CACHE:
+        return DYNAMIC_CACHE[catalog_id][0]
     return []
 
 # -------------------------------------------------------------
 # 3. MANIFEST DEFINITIONS (6 SEPARATE ADDONS)
 # -------------------------------------------------------------
 
-# Manifest 1: Trending Indian Series Addon (Daily Refresh)
+# Manifest 1: Trending Indian Movies, Series & OTT Addon (Daily Refresh)
 MANIFEST_TRENDING_INDIA = {
-    "id": "org.antigravity.trendingindianseriesaddon",
-    "version": "1.0.0",
-    "name": "Trending Indian Series & OTT (Daily Refresh)",
-    "description": "Live Stremio Addon featuring Trending Indian Web Series & TV Shows, refreshed daily automatically.",
-    "types": ["series"],
+    "id": "org.antigravity.trendingindiamoviesandseriesaddon",
+    "version": "1.1.0",
+    "name": "Trending Indian Movies, Series & OTT (Daily)",
+    "description": "Live Stremio Addon featuring daily trending Indian Movies, Web Series & OTT Releases, refreshed automatically every 24 hours.",
+    "types": ["movie", "series"],
     "catalogs": [
+        {
+            "type": "movie",
+            "id": "trending_indian_movies",
+            "name": "🔥 Trending Indian Movies of the Day"
+        },
         {
             "type": "series",
             "id": "trending_indian_series",
-            "name": "🔥 Trending Indian Web Series (Daily)"
+            "name": "🔥 Trending Indian Series & OTT of the Day"
         }
     ],
     "resources": ["catalog"],
@@ -409,8 +459,8 @@ def home():
         <p style="margin-bottom: 30px;">Choose and install each addon independently into your Stremio client.</p>
         
         <div class="card" style="border-color: #ff9800;">
-            <h2>🔥 Addon 1: Trending Indian Series & OTT <span class="badge">Live Daily Refresh</span></h2>
-            <p>Refreshes automatically every 24 hours with live daily trending Indian Web Series & TV Shows (Panchayat, Mirzapur, Farzi, etc.).</p>
+            <h2>🔥 Addon 1: Trending Indian Movies, Series & OTT of the Day <span class="badge">Live Daily Refresh</span></h2>
+            <p>Refreshes automatically every 24 hours with live daily trending Indian Movies, Web Series & OTT Releases (Kalki 2898 AD, Panchayat, Stree 2, Mirzapur, Farzi, etc.).</p>
             <a class="btn" style="background: #ff9800; color: #000;" href="{t_india_stremio_link}">➕ Install Trending India Addon</a>
             <code>{t_india_manifest_url}</code>
         </div>
@@ -454,7 +504,7 @@ def home():
 </html>"""
     return html
 
-# Routes for Trending Indian Series Addon
+# Routes for Trending Indian Movies & Series Addon
 @app.route('/trending-india/manifest.json')
 @app.route('/trending-india/manifest')
 @app.route('/trending-india-series/manifest.json')
@@ -506,7 +556,9 @@ def catalog(type_, id_, prefix=None, skip_str=None):
 
     metas = []
     if id_ == "trending_indian_series":
-        metas = get_trending_indian_series_cached()
+        metas = get_trending_indian_cached("trending_indian_series")
+    elif id_ == "trending_indian_movies":
+        metas = get_trending_indian_cached("trending_indian_movies")
     elif id_ == "curated_cartoons_series":
         metas = CARTOON_SERIES_METAS
     elif id_ == "curated_cartoons_movies":
